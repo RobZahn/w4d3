@@ -1,18 +1,9 @@
 module Slideable
 
-    HORIZONTAL_DIRS = [
-        [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], #top to bottom
-        [-1, 0], [-2, 0], [-3, 0], [-4, 0], [-5, 0], [-6, 0], [-7, 0], #bottom to to
-        [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7], #left to right
-        [0, -1], [0, -2], [0, -3], [0, -4], [0, -5], [0, -6], [0, -7], #right to left
-    ]
+    HORIZONTAL_DIRS = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 
-    DIAGONAL_DIRS = [
-        [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], #top left to bottom right
-        [-1, 1], [-2, 2], [-3, 3], [-4, 4], [-5, 5], [-6, 6], [-7, 7], #bottom left to top right
-        [1, -1], [2, -2], [3, -3], [4, -4], [5, -5], [6, -6], [7, -7], # top right to bottom left
-        [-1, -1], [-2, -2], [-3, -3], [-4, -4], [-5, -5], [-6, -6], [-7, -7], # bottom right to top left
-    ]
+
+    DIAGONAL_DIRS = [[1,1], [-1,1], [1, -1], [-1, -1]]
         
 
     def horizontal_dirs
@@ -20,22 +11,43 @@ module Slideable
     end
 
     def diagonal_dirs
-
+        DIAGONAL_DIRS
     end
 
     def moves
-
+        possible_moves = []
+        move_dirs.each do |dy, dx|
+            possible_moves << pos if grow_unblocked_moves_dir(dx, dy) #concat possible_moves
+        end
+        possible_moves
     end
 
     private
 
     def move_dirs
-
+        horizontal_dirs
+        diagonal_dirs
     end
 
     def grow_unblocked_moves_dir(dx, dy)
+        
+        #make loop, increment by dx, dy, grab new position, check to see if it satisfies all conditions, shovel into new arr
+        i = 0
+        while i < move_dirs.length
+
+        end
 
 
+        #check if pos == nil & within board
+        #check if pos == our piece or == opp piece
+        #if nil, it is a poss move
+        #if opp piece, is poss move (take opps piece n move into pos) 
+        #if our piece, not a poss move
+        #return a array of moves
+        if [dx, dy] == nil
+            
+        end
+        if [dx, dy] == piece.color 
     end
 
 
